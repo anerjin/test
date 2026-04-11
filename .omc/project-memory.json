@@ -31,9 +31,27 @@
   "directoryMap": {},
   "hotPaths": [
     {
+      "path": "index.html",
+      "accessCount": 9,
+      "lastAccessed": 1775900686276,
+      "type": "file"
+    },
+    {
+      "path": "js/main.js",
+      "accessCount": 6,
+      "lastAccessed": 1775900658458,
+      "type": "file"
+    },
+    {
       "path": "docs/PRD.md",
-      "accessCount": 1,
-      "lastAccessed": 1775899994638,
+      "accessCount": 2,
+      "lastAccessed": 1775900056193,
+      "type": "file"
+    },
+    {
+      "path": "css/custom.css",
+      "accessCount": 2,
+      "lastAccessed": 1775900528411,
       "type": "file"
     }
   ],
