@@ -32,20 +32,20 @@
   "hotPaths": [
     {
       "path": "index.html",
-      "accessCount": 32,
-      "lastAccessed": 1775910684777,
+      "accessCount": 37,
+      "lastAccessed": 1775932219673,
       "type": "file"
     },
     {
       "path": "js/main.js",
-      "accessCount": 13,
-      "lastAccessed": 1775910667543,
+      "accessCount": 14,
+      "lastAccessed": 1775932198414,
       "type": "file"
     },
     {
       "path": "css/custom.css",
-      "accessCount": 11,
-      "lastAccessed": 1775910674723,
+      "accessCount": 13,
+      "lastAccessed": 1775932206813,
       "type": "file"
     },
     {
@@ -56,14 +56,14 @@
     },
     {
       "path": "robots.txt",
-      "accessCount": 3,
-      "lastAccessed": 1775910674490,
+      "accessCount": 4,
+      "lastAccessed": 1775932198912,
       "type": "file"
     },
     {
       "path": "sitemap.xml",
-      "accessCount": 2,
-      "lastAccessed": 1775910674437,
+      "accessCount": 3,
+      "lastAccessed": 1775932198855,
       "type": "file"
     },
     {
@@ -130,6 +130,12 @@
       "path": "qa-screenshots/10-faq-open-mobile.png",
       "accessCount": 1,
       "lastAccessed": 1775910596012,
+      "type": "file"
+    },
+    {
+      "path": "_REVIEW/code-review-report.md",
+      "accessCount": 1,
+      "lastAccessed": 1775932419015,
       "type": "file"
     }
   ],
