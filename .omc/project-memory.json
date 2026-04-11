@@ -32,26 +32,104 @@
   "hotPaths": [
     {
       "path": "index.html",
-      "accessCount": 12,
-      "lastAccessed": 1775909407445,
+      "accessCount": 29,
+      "lastAccessed": 1775910297444,
       "type": "file"
     },
     {
       "path": "js/main.js",
-      "accessCount": 9,
-      "lastAccessed": 1775909407686,
+      "accessCount": 12,
+      "lastAccessed": 1775910198256,
       "type": "file"
     },
     {
       "path": "css/custom.css",
-      "accessCount": 5,
-      "lastAccessed": 1775909407413,
+      "accessCount": 9,
+      "lastAccessed": 1775910233164,
       "type": "file"
     },
     {
       "path": "docs/PRD.md",
-      "accessCount": 4,
-      "lastAccessed": 1775909407050,
+      "accessCount": 5,
+      "lastAccessed": 1775909496648,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1775910191470,
+      "type": "directory"
+    },
+    {
+      "path": "robots.txt",
+      "accessCount": 1,
+      "lastAccessed": 1775910206833,
+      "type": "file"
+    },
+    {
+      "path": "sitemap.xml",
+      "accessCount": 1,
+      "lastAccessed": 1775910215888,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/01-hero-desktop.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910368952,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/02-hero-top.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910385282,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/03-hero-reload.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910405322,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/04-hero-light.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910430987,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/05-about-light.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910451499,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/06-order-light.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910468195,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/07-estimate-calculator.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910516370,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/08-mobile-hero.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910542902,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/09-faq-mobile.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910565202,
+      "type": "file"
+    },
+    {
+      "path": "qa-screenshots/10-faq-open-mobile.png",
+      "accessCount": 1,
+      "lastAccessed": 1775910596012,
       "type": "file"
     }
   ],

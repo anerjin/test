@@ -1,29 +1,69 @@
 /**
- * 명함회사 원페이지 홈페이지 - Main JavaScript
- * 인터랙션 로직, 폼 유효성 검사, 캐러셀, 스크롤 애니메이션
+ * 명함공방 Premium Edition - Main JavaScript
+ * v2.0 - Dark mode, Estimate calculator, Enhanced animations
  */
 
 (function () {
   'use strict';
 
-  // ===================================
-  // DOM Ready
-  // ===================================
   document.addEventListener('DOMContentLoaded', init);
 
   function init() {
+    initThemeToggle();
     initNavigation();
     initScrollAnimations();
     initStatCounter();
     initPortfolioFilter();
     initTestimonialCarousel();
+    initEstimateCalculator();
     initContactForm();
     initBackToTop();
     initLightbox();
   }
 
   // ===================================
-  // 1. Navigation
+  // 1. Dark Mode Theme Toggle
+  // ===================================
+  function initThemeToggle() {
+    var toggles = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
+    var html = document.documentElement;
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        html.classList.add('dark');
+      } else {
+        html.classList.remove('dark');
+      }
+      localStorage.setItem('theme', theme);
+
+      // Update meta theme-color
+      var metaTheme = document.querySelector('meta[name="theme-color"]:not([media])');
+      if (!metaTheme) {
+        metaTheme = document.createElement('meta');
+        metaTheme.setAttribute('name', 'theme-color');
+        document.head.appendChild(metaTheme);
+      }
+      metaTheme.setAttribute('content', theme === 'dark' ? '#0f1117' : '#1a1a2e');
+    }
+
+    toggles.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var isDark = html.classList.contains('dark');
+        setTheme(isDark ? 'light' : 'dark');
+      });
+    });
+
+    // Listen to system preference changes
+    var mql = window.matchMedia('(prefers-color-scheme: dark)');
+    mql.addEventListener('change', function (e) {
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  }
+
+  // ===================================
+  // 2. Navigation
   // ===================================
   function initNavigation() {
     var nav = document.getElementById('main-nav');
@@ -34,7 +74,8 @@
 
     if (!nav) return;
 
-    // Scroll-based nav styling
+    var ticking = false;
+
     function handleNavScroll() {
       if (window.scrollY > 50) {
         nav.classList.add('nav-scrolled');
@@ -43,14 +84,13 @@
       }
     }
 
-    // Active section highlighting
     function highlightActiveSection() {
-      const scrollPos = window.scrollY + 120;
+      var scrollPos = window.scrollY + 120;
 
       sections.forEach(function (section) {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
+        var top = section.offsetTop;
+        var height = section.offsetHeight;
+        var id = section.getAttribute('id');
 
         if (scrollPos >= top && scrollPos < top + height) {
           navLinks.forEach(function (link) {
@@ -64,8 +104,14 @@
     }
 
     window.addEventListener('scroll', function () {
-      handleNavScroll();
-      highlightActiveSection();
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          handleNavScroll();
+          highlightActiveSection();
+          ticking = false;
+        });
+        ticking = true;
+      }
     }, { passive: true });
 
     // Mobile menu toggle
@@ -74,8 +120,8 @@
         mobileMenu.classList.toggle('open');
         var isOpen = mobileMenu.classList.contains('open');
         mobileToggle.setAttribute('aria-expanded', isOpen);
+        mobileToggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
 
-        // Toggle hamburger icon
         var bars = mobileToggle.querySelectorAll('span');
         if (bars.length === 3) {
           bars[0].style.transform = isOpen ? 'rotate(45deg) translate(6px, 6px)' : '';
@@ -84,11 +130,11 @@
         }
       });
 
-      // Close mobile menu on link click
       mobileMenu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
           mobileMenu.classList.remove('open');
           mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileToggle.setAttribute('aria-label', '메뉴 열기');
           var bars = mobileToggle.querySelectorAll('span');
           if (bars.length === 3) {
             bars[0].style.transform = '';
@@ -103,10 +149,10 @@
   }
 
   // ===================================
-  // 2. Scroll Animations (Intersection Observer)
+  // 3. Scroll Animations (Intersection Observer)
   // ===================================
   function initScrollAnimations() {
-    var animatedElements = document.querySelectorAll('.fade-up, .fade-in, .stagger-children');
+    var animatedElements = document.querySelectorAll('.fade-up, .fade-in, .fade-left, .fade-right, .scale-in, .stagger-children');
 
     if ('IntersectionObserver' in window) {
       var observer = new IntersectionObserver(function (entries) {
@@ -117,15 +163,14 @@
           }
         });
       }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -60px 0px'
       });
 
       animatedElements.forEach(function (el) {
         observer.observe(el);
       });
     } else {
-      // Fallback: show all elements
       animatedElements.forEach(function (el) {
         el.classList.add('visible');
       });
@@ -133,7 +178,7 @@
   }
 
   // ===================================
-  // 3. Stat Counter Animation
+  // 4. Stat Counter Animation
   // ===================================
   function initStatCounter() {
     var statNumbers = document.querySelectorAll('[data-count]');
@@ -143,14 +188,14 @@
     function animateCount(el) {
       var target = parseInt(el.getAttribute('data-count'), 10);
       var suffix = el.getAttribute('data-suffix') || '';
-      var duration = 2000;
-      var start = 0;
+      var duration = 2200;
       var startTime = null;
 
       function step(timestamp) {
         if (!startTime) startTime = timestamp;
         var progress = Math.min((timestamp - startTime) / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+        // easeOutExpo for smoother deceleration
+        var eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
         var current = Math.floor(eased * target);
 
         el.textContent = current.toLocaleString() + suffix;
@@ -182,7 +227,7 @@
   }
 
   // ===================================
-  // 4. Portfolio Filter
+  // 5. Portfolio Filter
   // ===================================
   function initPortfolioFilter() {
     var filterBtns = document.querySelectorAll('[data-filter]');
@@ -195,26 +240,33 @@
         var filter = btn.getAttribute('data-filter');
 
         // Update active state
-        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        filterBtns.forEach(function (b) {
+          b.classList.remove('active');
+          b.classList.add('bg-gray-100', 'dark:bg-gray-800');
+        });
         btn.classList.add('active');
+        btn.classList.remove('bg-gray-100', 'dark:bg-gray-800');
 
-        // Filter items
+        // Filter items with staggered animation
+        var delay = 0;
         portfolioItems.forEach(function (item) {
           if (filter === 'all' || item.getAttribute('data-category') === filter) {
             item.style.display = '';
             item.style.opacity = '0';
-            item.style.transform = 'scale(0.95)';
-            requestAnimationFrame(function () {
-              item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            item.style.transform = 'scale(0.92)';
+            setTimeout(function () {
+              item.style.transition = 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
               item.style.opacity = '1';
               item.style.transform = 'scale(1)';
-            });
+            }, delay);
+            delay += 60;
           } else {
+            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
             item.style.opacity = '0';
-            item.style.transform = 'scale(0.95)';
+            item.style.transform = 'scale(0.92)';
             setTimeout(function () {
               item.style.display = 'none';
-            }, 400);
+            }, 300);
           }
         });
       });
@@ -222,7 +274,7 @@
   }
 
   // ===================================
-  // 5. Testimonial Carousel
+  // 6. Testimonial Carousel
   // ===================================
   function initTestimonialCarousel() {
     var track = document.getElementById('testimonial-track');
@@ -248,11 +300,9 @@
     }
 
     function updateCarousel() {
-      var visibleCount = getVisibleCount();
       var percentage = (currentIndex / totalCards) * 100;
       track.style.transform = 'translateX(-' + percentage + '%)';
 
-      // Update dots
       if (dotsContainer) {
         var dots = dotsContainer.querySelectorAll('.carousel-dot');
         dots.forEach(function (dot, i) {
@@ -270,6 +320,7 @@
         var dot = document.createElement('button');
         dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
         dot.setAttribute('aria-label', '리뷰 ' + (i + 1) + '번째 그룹');
+        dot.setAttribute('type', 'button');
         dot.setAttribute('data-index', i);
         dot.addEventListener('click', function () {
           currentIndex = parseInt(this.getAttribute('data-index'), 10);
@@ -318,7 +369,16 @@
       isDragging = false;
     }, { passive: true });
 
-    // Resize handler
+    // Pause autoplay on hover
+    track.addEventListener('mouseenter', function () {
+      if (autoplayInterval) clearInterval(autoplayInterval);
+    });
+
+    track.addEventListener('mouseleave', function () {
+      resetAutoplay();
+    });
+
+    // Resize handler with debounce
     var resizeTimer;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
@@ -335,7 +395,78 @@
   }
 
   // ===================================
-  // 6. Contact Form Validation & Submit
+  // 7. Real-time Estimate Calculator
+  // ===================================
+  function initEstimateCalculator() {
+    var cardTypeSelect = document.getElementById('cardType');
+    var quantitySelect = document.getElementById('quantity');
+    var finishingCheckboxes = document.querySelectorAll('[name="finishing"]');
+    var estimateDisplay = document.getElementById('estimate-display');
+    var estimatePrice = document.getElementById('estimate-price');
+
+    if (!cardTypeSelect || !quantitySelect || !estimateDisplay || !estimatePrice) return;
+
+    // Base prices per 100 units
+    var basePrices = {
+      basic: 15000,
+      premium: 25000,
+      special: 40000
+    };
+
+    // Finishing add-on per order
+    var finishingPrices = {
+      'coating': 3000,
+      'gold-foil': 10000,
+      'silver-foil': 8000,
+      'embossing': 12000,
+      'die-cut': 15000
+    };
+
+    function calculateEstimate() {
+      var cardType = cardTypeSelect.value;
+      var quantity = quantitySelect.value;
+
+      if (!cardType || !quantity || quantity === 'other') {
+        estimateDisplay.classList.add('hidden');
+        return;
+      }
+
+      var basePrice = basePrices[cardType] || 0;
+      var quantityNum = parseInt(quantity, 10);
+      var units = quantityNum / 100;
+      var total = basePrice * units;
+
+      // Add finishing costs
+      finishingCheckboxes.forEach(function (cb) {
+        if (cb.checked) {
+          total += finishingPrices[cb.value] || 0;
+        }
+      });
+
+      // Volume discount
+      if (quantityNum >= 1000) {
+        total = Math.round(total * 0.9); // 10% discount
+      } else if (quantityNum >= 500) {
+        total = Math.round(total * 0.95); // 5% discount
+      }
+
+      estimateDisplay.classList.remove('hidden');
+      estimatePrice.textContent = total.toLocaleString();
+      estimatePrice.classList.add('updated');
+      setTimeout(function () {
+        estimatePrice.classList.remove('updated');
+      }, 400);
+    }
+
+    cardTypeSelect.addEventListener('change', calculateEstimate);
+    quantitySelect.addEventListener('change', calculateEstimate);
+    finishingCheckboxes.forEach(function (cb) {
+      cb.addEventListener('change', calculateEstimate);
+    });
+  }
+
+  // ===================================
+  // 8. Contact Form Validation & Submit
   // ===================================
   function initContactForm() {
     var form = document.getElementById('contact-form');
@@ -343,6 +474,7 @@
 
     var submitBtn = form.querySelector('button[type="submit"]');
     var honeypot = form.querySelector('[name="_gotcha"]');
+    var originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
 
     // Validation rules
     var rules = {
@@ -436,7 +568,6 @@
         }
       });
 
-      // Clear error on input
       field.addEventListener('input', function () {
         clearError(field.getAttribute('name'));
       });
@@ -446,10 +577,8 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // Check honeypot (spam protection)
       if (honeypot && honeypot.value) return;
 
-      // Validate all fields
       var hasError = false;
       var fieldsToValidate = ['name', 'phone', 'email', 'cardType', 'quantity', 'privacy'];
 
@@ -469,7 +598,6 @@
       });
 
       if (hasError) {
-        // Focus first error field
         var firstError = form.querySelector('.error');
         if (firstError) firstError.focus();
         return;
@@ -479,10 +607,8 @@
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<span class="spinner" aria-hidden="true"></span> 접수 중...';
 
-      // Collect form data
       var formData = new FormData(form);
 
-      // Submit to Formspree
       fetch(form.action, {
         method: 'POST',
         body: formData,
@@ -492,67 +618,70 @@
       })
         .then(function (response) {
           if (response.ok) {
-            showSuccessModal();
+            showModal('success-modal');
             form.reset();
+            // Hide estimate after reset
+            var estimateDisplay = document.getElementById('estimate-display');
+            if (estimateDisplay) estimateDisplay.classList.add('hidden');
           } else {
-            throw new Error('서버 오류가 발생했습니다.');
+            throw new Error('서버 오류');
           }
         })
         .catch(function () {
-          showErrorModal();
+          showModal('error-modal');
         })
         .finally(function () {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = '접수하기';
+          submitBtn.innerHTML = originalBtnHTML;
+          // Re-initialize Lucide icons in the button
+          if (window.lucide) lucide.createIcons();
         });
     });
   }
 
   // ===================================
-  // 7. Modals
+  // 9. Modals (Unified)
   // ===================================
-  function showSuccessModal() {
-    var modal = document.getElementById('success-modal');
-    if (modal) {
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
+  function showModal(modalId) {
+    var modal = document.getElementById(modalId);
+    if (!modal) return;
 
-      modal.querySelector('[data-close-modal]').addEventListener('click', function () {
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
 
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) {
-          modal.classList.remove('open');
-          document.body.style.overflow = '';
-        }
-      });
+    // Trap focus in modal
+    var focusableEls = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (focusableEls.length > 0) {
+      focusableEls[0].focus();
     }
-  }
 
-  function showErrorModal() {
-    var modal = document.getElementById('error-modal');
-    if (modal) {
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-
-      modal.querySelector('[data-close-modal]').addEventListener('click', function () {
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-
-      modal.addEventListener('click', function (e) {
-        if (e.target === modal) {
-          modal.classList.remove('open');
-          document.body.style.overflow = '';
-        }
-      });
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
     }
+
+    var closeBtns = modal.querySelectorAll('[data-close-modal]');
+    closeBtns.forEach(function (btn) {
+      btn.addEventListener('click', closeModal, { once: true });
+    });
+
+    modal.addEventListener('click', function handler(e) {
+      if (e.target === modal) {
+        closeModal();
+        modal.removeEventListener('click', handler);
+      }
+    });
+
+    document.addEventListener('keydown', function handler(e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+        document.removeEventListener('keydown', handler);
+      }
+    });
   }
 
   // ===================================
-  // 8. Lightbox (Portfolio)
+  // 10. Lightbox (Portfolio)
   // ===================================
   function initLightbox() {
     var lightbox = document.getElementById('lightbox');
@@ -594,17 +723,25 @@
   }
 
   // ===================================
-  // 9. Back to Top
+  // 11. Back to Top
   // ===================================
   function initBackToTop() {
     var btn = document.getElementById('back-to-top');
     if (!btn) return;
 
+    var ticking = false;
+
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 300) {
-        btn.classList.add('visible');
-      } else {
-        btn.classList.remove('visible');
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          if (window.scrollY > 400) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     }, { passive: true });
 
