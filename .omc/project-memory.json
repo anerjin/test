@@ -32,20 +32,20 @@
   "hotPaths": [
     {
       "path": "index.html",
-      "accessCount": 37,
-      "lastAccessed": 1775932219673,
+      "accessCount": 38,
+      "lastAccessed": 1775959379599,
       "type": "file"
     },
     {
       "path": "js/main.js",
-      "accessCount": 14,
-      "lastAccessed": 1775932198414,
+      "accessCount": 15,
+      "lastAccessed": 1775959379658,
       "type": "file"
     },
     {
       "path": "css/custom.css",
-      "accessCount": 13,
-      "lastAccessed": 1775932206813,
+      "accessCount": 14,
+      "lastAccessed": 1775959379958,
       "type": "file"
     },
     {
@@ -136,6 +136,36 @@
       "path": "_REVIEW/code-review-report.md",
       "accessCount": 1,
       "lastAccessed": 1775932419015,
+      "type": "file"
+    },
+    {
+      "path": "_PLAN/01_요구사항_정의서.md",
+      "accessCount": 1,
+      "lastAccessed": 1775959619393,
+      "type": "file"
+    },
+    {
+      "path": "_PLAN/02_사용자_페르소나_여정맵.md",
+      "accessCount": 1,
+      "lastAccessed": 1775959673616,
+      "type": "file"
+    },
+    {
+      "path": "_PLAN/03_정보구조도_와이어프레임.md",
+      "accessCount": 1,
+      "lastAccessed": 1775959764020,
+      "type": "file"
+    },
+    {
+      "path": "_PLAN/04_디자인시스템.md",
+      "accessCount": 1,
+      "lastAccessed": 1775959858998,
+      "type": "file"
+    },
+    {
+      "path": "_DEV_PRD/PRD_명함공방.md",
+      "accessCount": 1,
+      "lastAccessed": 1775959977365,
       "type": "file"
     }
   ],
