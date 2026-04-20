@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
 
+
   "lastScanned": 1776658584738,
   "projectRoot": "/Users/jinseokkim/.ultrawork/worktrees/b989b496-73e7-4acc-aaf9-4e5bfc81d55f/6d9aa226-4977-4b51-b478-c7d64409e8ce",
 
@@ -36,6 +37,47 @@
   "directoryMap": {},
   "hotPaths": [
     {
+
+      "path": "",
+      "accessCount": 7,
+      "lastAccessed": 1776658613451,
+      "type": "directory"
+    },
+    {
+      "path": "templates/thankyou.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658805762,
+      "type": "file"
+    },
+    {
+      "path": "templates/event-invite.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658888961,
+      "type": "file"
+    },
+    {
+      "path": "templates/case-study.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658963611,
+      "type": "file"
+    },
+    {
+      "path": "templates/pricing.html",
+      "accessCount": 1,
+      "lastAccessed": 1776659040148,
+      "type": "file"
+    },
+    {
+      "path": "templates/meeting-request.html",
+      "accessCount": 1,
+      "lastAccessed": 1776659118860,
+      "type": "file"
+    },
+    {
+      "path": "_DEV/04_coldmail-templates-report_04201325.md",
+      "accessCount": 1,
+      "lastAccessed": 1776659204106,
+
 
       "path": "templates/service-intro.html",
       "accessCount": 1,
