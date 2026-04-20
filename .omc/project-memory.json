@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776658031019,
+  "projectRoot": "/Users/jinseokkim/.ultrawork/worktrees/b989b496-73e7-4acc-aaf9-4e5bfc81d55f/1e5f9def-4f73-4769-ad83-9ceadfc9d51f",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "master",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {},
+  "hotPaths": [
+    {
+      "path": "_PLAN/neowave-design-analysis_04201304.md",
+      "accessCount": 1,
+      "lastAccessed": 1776658079277,
+      "type": "file"
+    },
+    {
+      "path": "_PLAN/coldmail-template-scenarios_04201315.md",
+      "accessCount": 1,
+      "lastAccessed": 1776658285522,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
