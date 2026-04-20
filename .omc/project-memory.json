@@ -1,9 +1,9 @@
 {
   "version": "1.0.0",
 
-
   "lastScanned": 1776658584738,
   "projectRoot": "/Users/jinseokkim/.ultrawork/worktrees/b989b496-73e7-4acc-aaf9-4e5bfc81d55f/6d9aa226-4977-4b51-b478-c7d64409e8ce",
+
 
   "techStack": {
     "languages": [],
@@ -37,6 +37,7 @@
   "directoryMap": {},
   "hotPaths": [
     {
+
 
       "path": "",
       "accessCount": 7,
@@ -123,6 +124,7 @@
       "path": "_PLAN/coldmail-template-scenarios_04201315.md",
       "accessCount": 1,
       "lastAccessed": 1776658285522,
+
 
       "type": "file"
     }
