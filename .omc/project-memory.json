@@ -1,7 +1,9 @@
 {
   "version": "1.0.0",
+
   "lastScanned": 1776658584738,
   "projectRoot": "/Users/jinseokkim/.ultrawork/worktrees/b989b496-73e7-4acc-aaf9-4e5bfc81d55f/6d9aa226-4977-4b51-b478-c7d64409e8ce",
+
   "techStack": {
     "languages": [],
     "frameworks": [],
@@ -34,6 +36,7 @@
   "directoryMap": {},
   "hotPaths": [
     {
+
       "path": "templates/service-intro.html",
       "accessCount": 1,
       "lastAccessed": 1776658770923,
@@ -67,6 +70,18 @@
       "path": "_DEV/coldmail-templates-report_04201330.md",
       "accessCount": 1,
       "lastAccessed": 1776658985806,
+
+      "path": "_PLAN/neowave-design-analysis_04201304.md",
+      "accessCount": 1,
+
+      "lastAccessed": 1776658079277,
+      "type": "file"
+    },
+    {
+      "path": "_PLAN/coldmail-template-scenarios_04201315.md",
+      "accessCount": 1,
+      "lastAccessed": 1776658285522,
+
       "type": "file"
     }
   ],
