@@ -1,7 +1,10 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776658584657,
-  "projectRoot": "/Users/jinseokkim/.ultrawork/worktrees/b989b496-73e7-4acc-aaf9-4e5bfc81d55f/bb499e1d-5a4e-408e-b6d5-ac3202386724",
+
+
+  "lastScanned": 1776658584738,
+  "projectRoot": "/Users/jinseokkim/.ultrawork/worktrees/b989b496-73e7-4acc-aaf9-4e5bfc81d55f/6d9aa226-4977-4b51-b478-c7d64409e8ce",
+
   "techStack": {
     "languages": [],
     "frameworks": [],
@@ -34,6 +37,7 @@
   "directoryMap": {},
   "hotPaths": [
     {
+
       "path": "",
       "accessCount": 7,
       "lastAccessed": 1776658613451,
@@ -73,6 +77,53 @@
       "path": "_DEV/04_coldmail-templates-report_04201325.md",
       "accessCount": 1,
       "lastAccessed": 1776659204106,
+
+
+      "path": "templates/service-intro.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658770923,
+      "type": "file"
+    },
+    {
+      "path": "templates/project-proposal.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658816599,
+      "type": "file"
+    },
+    {
+      "path": "templates/portfolio-share.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658858933,
+      "type": "file"
+    },
+    {
+      "path": "templates/partnership.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658905209,
+      "type": "file"
+    },
+    {
+      "path": "templates/followup.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658944385,
+      "type": "file"
+    },
+    {
+      "path": "_DEV/coldmail-templates-report_04201330.md",
+      "accessCount": 1,
+      "lastAccessed": 1776658985806,
+
+      "path": "_PLAN/neowave-design-analysis_04201304.md",
+      "accessCount": 1,
+
+      "lastAccessed": 1776658079277,
+      "type": "file"
+    },
+    {
+      "path": "_PLAN/coldmail-template-scenarios_04201315.md",
+      "accessCount": 1,
+      "lastAccessed": 1776658285522,
+
       "type": "file"
     }
   ],
