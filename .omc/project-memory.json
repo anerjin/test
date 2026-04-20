@@ -1,0 +1,50 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776658328062,
+  "projectRoot": "/Users/jinseokkim/.ultrawork/worktrees/b989b496-73e7-4acc-aaf9-4e5bfc81d55f/c465fa0e-f882-48ca-9ba8-5ae7b2a3e1ca",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "master",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {},
+  "hotPaths": [
+    {
+      "path": "templates/base-email.html",
+      "accessCount": 2,
+      "lastAccessed": 1776658541904,
+      "type": "file"
+    },
+    {
+      "path": "_DEV/base-email-template-report_04201320.md",
+      "accessCount": 1,
+      "lastAccessed": 1776658529478,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
