@@ -1,0 +1,74 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776658584738,
+  "projectRoot": "/Users/jinseokkim/.ultrawork/worktrees/b989b496-73e7-4acc-aaf9-4e5bfc81d55f/6d9aa226-4977-4b51-b478-c7d64409e8ce",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "master",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {},
+  "hotPaths": [
+    {
+      "path": "templates/service-intro.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658770923,
+      "type": "file"
+    },
+    {
+      "path": "templates/project-proposal.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658816599,
+      "type": "file"
+    },
+    {
+      "path": "templates/portfolio-share.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658858933,
+      "type": "file"
+    },
+    {
+      "path": "templates/partnership.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658905209,
+      "type": "file"
+    },
+    {
+      "path": "templates/followup.html",
+      "accessCount": 1,
+      "lastAccessed": 1776658944385,
+      "type": "file"
+    },
+    {
+      "path": "_DEV/coldmail-templates-report_04201330.md",
+      "accessCount": 1,
+      "lastAccessed": 1776658985806,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
